@@ -70,3 +70,23 @@ Overlapping I/O with CPU processing is very advantageous because it allows the C
 System Call Steps:
 
 1. Application calls the system call write()
+2. Trap/"software interrupt" immediately follows
+3. Mode bit is set to kernel bit.
+4. Kernel begins to execute the system write driver
+5. The write driver obtains the status from the device controller
+6. Add to request queue
+7. Give control back to application
+
+If device is not busy:
+
+1. Device handler is executed
+2. Pull data from device controller
+3. Return data to application.
+
+If device is busy:
+
+1. If device is busy, interrupt occurs when it is available
+2. Interrupt handler is executed, find out which device raised the interrupt flag.
+3. Device handler is executed
+4. Pull data from device controller
+5. Return data to application.
