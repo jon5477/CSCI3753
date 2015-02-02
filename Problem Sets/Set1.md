@@ -38,7 +38,16 @@ Batch Mode Multiprogrammed finished first in this instance. The reverse would be
 Explain the differences between the four different kinds of exceptions found in an OS exception table. What is a software interrupt, and how does that differ from a hardware interrupt?
 
 ---
+Exceptions:
 
+|Type|Differences|
+|----|-----------|
+|Trap|Intentional exception used as a "software interrupt" for system calls. Passes control from the application to the kernel.|
+|Fault|Exception used for an error that might potentially be recoverable (i.e. page faults, stack overflow, segmentation faults)|
+|Interrupt|Exception used as a form of signaling that an I/O task has been completed.|
+|Abort|Exception used for serious problems such as hardware failure. There is no recovery here.|
+
+A software interrupt or trap is a way to process system calls in an application. It allows the current application to halt execution and sets the mode bit to 0 and gives control to the kernel to execution the desired system call. Once the system call completes, the mode bit is set back to 1 and control is given back to the application. A hardware interrupt is a way to let the application know that an I/O task has completed (e.g. read/write from/to disk). It allows the current application to not wait on the operating system to return (i.e. completing a system call) for a potentially long running task and allows the program to be notified of when that task has been completed in the future (asynchronously).
 
 ---
 What role does the jump table play in executing a system call?
