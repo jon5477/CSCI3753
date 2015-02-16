@@ -1,5 +1,3 @@
-
-
 #include<linux/init.h>
 #include<linux/module.h>
 
@@ -34,7 +32,7 @@ ssize_t simple_char_driver_write (struct file *pfile, const char __user *buffer,
 	/* copy_from_user function. destination is device_buffer (the buffer defined at the start of the code) and source is the userspace 		buffer *buffer */
 	printk(KERN_ALERT "Writing to device.\n");
 	copy_from_user(device_buffer, buffer, length);
-	//printk(KERN_ALERT "Wrote %d bytes to device.\n", length);
+	printk(KERN_ALERT "Wrote %d bytes to device.\n", length);
 	return length;
 }
 
@@ -43,7 +41,7 @@ int simple_char_driver_open (struct inode *pinode, struct file *pfile)
 {
 	/* print to the log file that the device is opened and also print the number of times this device has been opened until now*/
 	openCount++;
-	//printk(KERN_ALERT "Opened Device. Count: %d\n", openCount);
+	printk(KERN_ALERT "Opened Device. Count: %d\n", openCount);
 	return 0;
 }
 
@@ -52,7 +50,7 @@ int simple_char_driver_close (struct inode *pinode, struct file *pfile)
 {
 	/* print to the log file that the device is closed and also print the number of times this device has been closed until now*/
 	closeCount++;
-	//printk(KERN_ALERT "Closed Device. Count: %d\n", closeCount);
+	printk(KERN_ALERT "Closed Device. Count: %d\n", closeCount);
 	return 0;
 }
 
