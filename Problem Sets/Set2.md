@@ -8,6 +8,32 @@ Problem Set 2
 **2. Suppose task T1 has code C1 that must execute before task T2's code C2.  Design a solution that enforces this ordering using only condition variables, locks, and integer variables.  Semaphores and monitors are not allowed.**
 
 ---
+```
+// this is pseudocode
+lock mutex_lock;
+condition c;
+int t1_complete = 0;
+
+// Task T1
+Acquire(mutex_lock);
+// execute code c1
+t1_complete = 1;
+Release(mutex_lock);
+c.signal();
+// End Task T1
+
+// Task T2
+Acquire(mutex_lock);
+while (!t1_complete) {
+	Release(mutex_lock);
+	c.wait();
+	Acquire(mutex_lock);
+}
+// execute code c2
+Release(mutex_lock);
+// End Task T2
+
+```
 
 ---
 **3. Explain why the solution to the 3rd Readers/Writers problem is starvation-free.**
