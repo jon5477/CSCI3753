@@ -52,8 +52,46 @@ void interrupt_service_routine()
 **5. Suppose you are asked to design a server application consisting of two processes P1 and P2, such that (1) P2 is to sleep until woken up by P1, whereupon (2) P2 would take a 10 MB file from P1 and compress it. What forms of IPC would be best suited to implement these types of information sharing? Describe your solution.**
 
 ---
+Memory Sharing IPC would be ideal for this situation since you have a fairly large file (10 MB) that you wish to pass from one process P1 to another process P2. Process P1 could first read the file into main memory, wake process P2 while passing the pointer to memory where the file is stored and wait asynchronously for P2 to complete. Once process P2 wakes, it will synchronize access to that memory and begin to compress the data in that memory location. Once the compression finishes, P2 will release the lock to memory, send an interrupt to P1 to alert that the file has finished compression, and resume sleeping.
 
 ---
 **6. Suppose processes P0 and P1 share variable V1, and processes P1 and P2 share variable V2, while processes P0, P1 and P2 share V3.  Operations on V1 are limited to increment() and decrement().  Operations on V2 are limited to square() and squareroot().  Operations on V3 are limited to sin() and cos().  Design a monitor-based solution that synchronizes access to and manipulation of these variables between the three processes so that race conditions are eliminated.**
 
 ---
+```
+monitor M1 {
+	private int v1;
+
+	public function increment() {
+		v1++;
+	}
+
+	public function decrement() {
+		v1--;
+	}
+}
+
+monitor M2 {
+	private int v2;
+
+	public function square() {
+		v2 *= v2;
+	}
+
+	public function squareRoot() {
+		v2 = sqrt(v2);
+	}
+}
+
+monitor M3 {
+	private int v3;
+
+	public function sin() {
+		v3 = sin(v3);
+	}
+
+	public function cos() {
+		v3 = cos(v3);
+	}
+}
+```
