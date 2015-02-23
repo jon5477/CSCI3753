@@ -3,6 +3,47 @@ Problem Set 2
 **1. There is a one-lane east-west bridge in Hawaii such that when a car is on the bridge going eastbound, no westbound cars are allowed until the eastbound car has left the bridge.  Similarly when a westbound car is on the bridge, no eastbound cars are allowed until the westbound car has left the bridge.  To make matters more complicated, if an eastbound car arrives and sees another eastbound car already on the bridge, then that eastbound car will also proceed onto the bridge.  This is true even if there is a westbound car already waiting to enter the bridge.  Similarly, a westbound car can tailgate behind another westbound car already on the bridge even if an eastbound car was waiting.   Deign a synchronization solution using only locks, semaphores and integer variables that achieves the following: allows all cars bound in a certain direction to continue crossing as long as there is at least one car still on the bridge that is bound in that direction, then toggles to allow all cars in the opposite direction to proceed in a similar manner.  The solution need not be starvation-free.**
 
 ---
+```
+lock mutex_lock;
+semaphore east_sem, west_sem;
+int east_cars = 0, west_cars = 0;
+
+go_east() {
+	P(east_sem);
+	P(mutex_lock);
+	east_cars++;
+	if (east_cars == 1) {
+		P(west_sem); // lock the west side
+	}
+	V(mutex_lock);
+	V(east_sem);
+	// code to cross the bridge
+	P(mutex_lock);
+	east_cars--;
+	if (!east_cars) {
+		V(west_sem); // release west side
+	}
+	V(mutex_lock);
+}
+
+go_west() {
+	P(west_sem);
+	P(mutex_lock);
+	west_cars++;
+	if (west_cars == 1) {
+		P(east_cars); // lock the east side
+	}
+	V(mutex_lock);
+	V(west_sem);
+	// code to cross the bridge
+	P(mutex_lock);
+	west_cars--;
+	if (!west_cars) {
+		V(east_sem); // release east side
+	}
+	V(mutex_lock);
+}
+```
 
 ---
 **2. Suppose task T1 has code C1 that must execute before task T2's code C2.  Design a solution that enforces this ordering using only condition variables, locks, and integer variables.  Semaphores and monitors are not allowed.**
