@@ -61,39 +61,44 @@ Memory Sharing IPC would be ideal for this situation since you have a fairly lar
 
 ---
 ```
-monitor M1 {
-	private int v1;
+monitor SomeMonitor {
+	condition c1, c2, c3;
+	private int v1, v2, v3;
 
 	public function increment() {
+		c1.wait();
 		v1++;
+		c1.signal();
 	}
 
 	public function decrement() {
+		c1.wait();
 		v1--;
+		c1.signal();
 	}
-}
-
-monitor M2 {
-	private int v2;
 
 	public function square() {
+		c2.wait();
 		v2 *= v2;
+		c2.signal();
 	}
 
 	public function squareRoot() {
+		c2.wait();
 		v2 = sqrt(v2);
+		c2.signal();
 	}
-}
-
-monitor M3 {
-	private int v3;
 
 	public function sin() {
+		c3.wait();
 		v3 = sin(v3);
+		c3.signal();
 	}
 
 	public function cos() {
+		c3.wait();
 		v3 = cos(v3);
+		c3.signal();
 	}
 }
 ```
