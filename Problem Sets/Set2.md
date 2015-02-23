@@ -34,6 +34,7 @@ void swap(int *y, int *z)
 ```
 
 ---
+No, the swap() function is not thread-safe for the following reason. Suppose there were two threads (A and B) that are calling the swap() function. If A enters swap() and halts execution after "*y = *z" (either by interruption or a context switch), the consequence is now that half of a swap has occured and the reference to y is now lost. If a context switch occured in the middle of this swap, the value of temp would be overwritten and the value of y in thread A would be lost (it was previously stored in temp), if A were to resume execution (context switched back) it would essentially use the wrong value of temp.
 
 ---
 **b. Suppose the swap() function above is called by the interrupt service routine (ISR) below.  Assume that if swap() is interrupted during normal execution, the ISR below is called and calls swap() again, reentering swap() and executing in the context of the interrupted thread.  Is swap() reentrant?  Explain your reasoning.**
@@ -47,6 +48,7 @@ void interrupt_service_routine()
 ```
 
 ---
+Yes, swap() is reentrant since there is no use of a semaphore, monitor, or lock whatsoever. Therefore calling this method would pose no risk of deadlock and would execute normally.
 
 ---
 **5. Suppose you are asked to design a server application consisting of two processes P1 and P2, such that (1) P2 is to sleep until woken up by P1, whereupon (2) P2 would take a 10 MB file from P1 and compress it. What forms of IPC would be best suited to implement these types of information sharing? Describe your solution.**
