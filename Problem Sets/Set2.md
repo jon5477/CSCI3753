@@ -39,6 +39,7 @@ Release(mutex_lock);
 **3. Explain why the solution to the 3rd Readers/Writers problem is starvation-free.**
 
 ---
+The 3rd solution to the R/W problem is starvation free because of 2 major concepts. When the writing thread wishes to enter into the critical section for writing data, future arrivals of reading threads will have to wait until the writing thread finishes writing while currently reading threads can continue to read. This prevents writer threads from being starved. On the other hand, reading threads are not starved since multiple readers are allowed to access the critical section as long as there are no writer threads.
 
 ---
 **4. a. Is the swap() function below thread-safe or not?  Explain your reasoning.**
