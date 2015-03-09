@@ -179,5 +179,7 @@ b.  (+10) Is this system fair at the level of schedulable tasks?  Is this system
 Justify your answers.
 
 ===
+At the level of schedulable tasks, the system is fair because each task is shared equally.
+At the level of processes, the system is not fair since there are shared resources between the processes.
 
 ===
