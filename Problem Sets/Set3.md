@@ -27,22 +27,27 @@ Current Allocation:
 The system is in a safe state.
 
 1. Give resources to P2:
+
 | R0 | R1 | R2 | R3 |
 |----|----|----|----|
 | 2  | 2  | 2  | 1  |
 2. Give resources to P3:
+
 | R0 | R1 | R2 | R3 |
 |----|----|----|----|
 | 3  | 2  | 3  | 1  |
 3. Give resources to P4:
+
 | R0 | R1 | R2 | R3 |
 |----|----|----|----|
 | 3  | 3  | 3  | 2  |
 4. Give resources to P1:
+
 | R0 | R1 | R2 | R3 |
 |----|----|----|----|
 | 4  | 4  | 3  | 2  |
 5. Give resources to P0:
+
 | R0 | R1 | R2 | R3 |
 |----|----|----|----|
 | 6  | 4  | 4  | 2  |
