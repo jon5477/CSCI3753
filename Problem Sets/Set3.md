@@ -121,6 +121,35 @@ FCFS:
 |   P1   | P2 | P3 | P4 | P5 |
 0       10   11   13   14   19
 ```
+Wait Time: (10 + 11 + 13 + 14) / 5 = 9.6 s
+Turnaround Time: (10 + 11 + 13 + 14 + 19) / 5 = 13.4 s
+
+```
+SJF:
+| P2 | P4 | P3 | P5 | P1 |
+0    1    2    4    9    19
+```
+Wait Time: (1 + 2 + 4 + 9) / 5 = 3.2 s
+Turnaround Time: (1 + 2 + 4 + 9 + 19) / 5 = 7.0 s
+
+```
+Non-preemptive Priority:
+| P2 | P5 | P1 | P3 | P4 |
+0    1    6   16   18   19
+```
+Wait Time: (1 + 6 + 16 + 18) / 5 = 8.2 s
+Turnaround Time: (1 + 6 + 16 + 18 + 19) / 5 = 12.0 s
+
+```
+Round Robin:
+|P1|P2|P3|P4|P5|P1|P3|P5|P1| P5 | P1 | P5 | P1 | P5 | P1 | P1 | P1 | P1 | P1 |
+0  1  2  3  4  5  6  7  8  9   10   11   12   13   14   15   16   17   18   19
+
+```
+Wait Time: 5.4 s
+Turnaround Time: 9.2 s
+
+SJF has the lowest average wait times and turnaround times.
 
 ===
 Problem 4: Suppose the Completely Fair Scheduler (CFS) algorithm is applied to the following scenario. There exist
