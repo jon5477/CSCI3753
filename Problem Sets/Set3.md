@@ -24,6 +24,28 @@ Current Allocation:
 | P4 | 0  | 1  | 0  | 1  |
 
 ===
+The system is in a safe state.
+
+1. Give resources to P2:
+| R0 | R1 | R2 | R3 |
+|----|----|----|----|
+| 2  | 2  | 2  | 1  |
+2. Give resources to P3:
+| R0 | R1 | R2 | R3 |
+|----|----|----|----|
+| 3  | 2  | 3  | 1  |
+3. Give resources to P4:
+| R0 | R1 | R2 | R3 |
+|----|----|----|----|
+| 3  | 3  | 3  | 2  |
+4. Give resources to P1:
+| R0 | R1 | R2 | R3 |
+|----|----|----|----|
+| 4  | 4  | 3  | 2  |
+5. Give resources to P0:
+| R0 | R1 | R2 | R3 |
+|----|----|----|----|
+| 6  | 4  | 4  | 2  |
 
 ===
 Problem 2: Suppose we have 5 dining philosophers and 5 shared chopsticks, and that the philosophers are circularly
@@ -33,6 +55,41 @@ data structures, e.g. Allocation and Request matrices, used in the Deadlock dete
 detection algorithm on your model to prove that the dining philosophers are in deadlock.
 
 ===
+Let R0 be the chopstick.
+Let R1 be the serving spoon.
+
+Maximum Claims:
+
+|    | R0 | R1 |
+|----|----|----|
+| P1 | 2  | 1  |
+| P2 | 2  | 1  |
+| P3 | 2  | 1  |
+| P4 | 2  | 1  |
+| P5 | 2  | 1  |
+
+Current Allocation:
+
+|    | R0 | R1 |
+|----|----|----|
+| P1 | 1  | 1  |
+| P2 | 1  | 0  |
+| P3 | 1  | 0  |
+| P4 | 1  | 0  |
+| P5 | 1  | 0  |
+
+Request:
+
+|    | R0 | R1 |
+|----|----|----|
+| P1 | 1  | 0  |
+| P2 | 1  | 0  |
+| P3 | 1  | 0  |
+| P4 | 1  | 1  |
+| P5 | 1  | 0  |
+
+All philosophers need 1 more chopstick to eat. However, there are no more available chopsticks (R0) since all have been allocated so there is deadlock.
+Serving spoon can be allocated to Philosopher 4 easily since it is available.
 
 ===
 Problem 3: Consider the following set of processes, with the length of
