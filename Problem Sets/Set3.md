@@ -116,6 +116,12 @@ has the lowest average turnaround time?
 
 ===
 
+```
+FCFS:
+|   P1   | P2 | P3 | P4 | P5 |
+0       10   11   13   14   19
+```
+
 ===
 Problem 4: Suppose the Completely Fair Scheduler (CFS) algorithm is applied to the following scenario. There exist
 two processes P1 and P2 that need to be scheduled.  P1 has two threads T1 and T2 that are implemented as kernel
@@ -128,6 +134,16 @@ the wait time balances as each time slice is allocated to a kernel-schedulable t
 time for each such task?  See for example slide 21 of the Chapter 6.3 lecture slides.
 
 ===
+
+| T1 | T2 | P2 | T1 |
+|----|----|----|----|
+Time --->
+
+|Giving time T to task:| T1  | T2  | T3 |
+|----------------------|-----|-----|----|
+| T1                   |-2T/3|T/3  |T/3 |
+| T2                   |-1T/3|-1T/3|2T/3|
+| P2                   | 0   | 0   | 0  |
 
 ===
 b.  (+10) Is this system fair at the level of schedulable tasks?  Is this system fair at the level of processes?
