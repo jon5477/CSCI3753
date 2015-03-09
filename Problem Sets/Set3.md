@@ -175,7 +175,7 @@ Time --->
 | P2                   | 0   | 0   | 0  |
 
 ===
-b.  (+10) Is this system fair at the level of schedulable tasks?  Is this system fair at the level of processes?
+b. Is this system fair at the level of schedulable tasks?  Is this system fair at the level of processes?
 Justify your answers.
 
 ===
