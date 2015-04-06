@@ -1,0 +1,51 @@
+CS3753 (Operating Systems)
+Spring 2012
+University of Colorado Boulder
+Programming Assignment 3
+Public Code
+
+By Andy Sayler - 2012
+http://www.andysayler.com
+
+With help from:
+Junho Ahn - 2012
+
+---Folders---
+handout - Assignment description and documentation
+
+---Executables---
+./testscript - A simple bash script for running a few sample test cases
+./pi - A simple program for statistically calculating pi
+./pi-sched - A simple program for statistically calculating pi using
+             a specific scheduling policy
+./rw - A simple i/o bound example program.
+./rr_quantum - A simple program for determing the RR quantum.
+
+---Examples---
+Build:
+ make
+
+Clean:
+ make clean
+
+pi:
+ ./pi
+ ./pi <Number of Iterations>
+
+pi-sched:
+ ./pi-sched
+ ./pi-sched <Number of Iterations>
+ ./pi-sched <Number of Iterations> <Scheduling Policy>
+
+rw:
+ ./rw
+ ./rw <#Bytes to Write to Output File>
+ ./rw <#Bytes to Write to Output File> <Block Size>
+ ./rw <#Bytes to Write to Output File> <Block Size> <Input Filename>
+ ./rw <#Bytes to Write to Output File> <Block Size> <Input Filename> <Output Filename>
+
+testscript:
+ ./testscript
+
+rr_quantum:
+ sudo ./rr_quantum
