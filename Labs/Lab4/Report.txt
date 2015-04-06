@@ -1,0 +1,31 @@
+Abstract
+
+Through extensive testing of the Linux task scheduler, the running time data results determined some interesting details of the individual scheduling policies to maximize work done in less time for each respective task (CPU bound, IO bound, mixed) based on number of processes created. Overall, based on the results there was no respective "winning" scheduling algorithm based on running time since most the running time of each respective algorithm was generally the same for each task. However, the main difference in the different running algorithms would be the number of context switches for each algorithm.
+
+Introduction
+
+For this benchmarking test, we tested different conditions for each running program based on number of running processes. The number of running processes were split into 3 categories: low for 5 simultaneous running processes, medium for 70 simultaneous running processes, and high for 300 simultaneous running processes.
+
+Method
+
+For our CPU bound task, we used the included pi-scheduler to run our scheduling benchmark tests.
+
+For our IO bound task, we used the included file read/writing program to run our scheduling benchmark tests.
+
+For our mixed task, we used both the pi-scheduler and read/writing program for the scheduling benchmark tests.
+
+Results
+
+[The graphs are located in the same directory as this report as images.]
+
+Analysis
+
+Initially I expected either CFS to have the highest overhead because of the execution order of tasks. For example, if a long-running task is currently enqueued and many new tasks arrive, that adds some additional overhead to the running task since it may trigger a context switch as more tasks arrive. I expected quite a bit of context switching for higher simultaneous running processes and found this to be the case. What had surprised me was the number of context switches in the FIFO scheduling queue, I considered the context switches in the FIFO to be higher than what the results had given. Based on the results, the higher simultaneous processes all had the similar running time. I would not consider this particularly surprising since all the running processes had a generally uniform running time (they were all executing the same program and doing the same thing). In consideration for the different types of tasks, it was not surprising to see that there were more interrupts (both voluntary and involuntary) for IO bound tasks since IO bound tasks are considerably slower than CPU bound tasks.
+
+Conclusion
+
+Based on our running results, I can see why CFS is used as the default task scheduler for Linux. Since it is essentially a culmination of CFS and RR, each program gets an appropriate amount of time to run on the CPU and if it uses too much CPU time then the scheduler will interrupt the process and schedule another process. This is good for fault isolation and preventing CPU starvation.
+
+References
+
+This programming assignment was performed in conjunction with Yu Zhou. The benchmarking was performed on his machine.
