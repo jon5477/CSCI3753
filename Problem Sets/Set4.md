@@ -48,7 +48,7 @@ main memory/RAM. Also show possible page tables for P1 and P2
 
 =====
 
-![](https://github.com/jon5477/CSCI3753/edit/master/Problem Sets/Set4/prob3.jpg)
+![](https://github.com/jon5477/CSCI3753/blob/master/Problem%20Sets/Set4/prob3.jpg)
 
 =====
 Problem 4
@@ -64,6 +64,7 @@ values are substituted, and assuming assuming p = .001 and p_TLB =
 
 =====
 
+![](https://github.com/jon5477/CSCI3753/blob/master/Problem%20Sets/Set4/prob4.jpg)
 
 =====
 Problem 5
@@ -75,6 +76,7 @@ point.
 
 =====
 
+![](https://github.com/jon5477/CSCI3753/blob/master/Problem%20Sets/Set4/prob5.jpg)
 
 =====
 Problem 6
@@ -91,6 +93,7 @@ c. LRU
 
 =====
 
+![](https://github.com/jon5477/CSCI3753/blob/master/Problem%20Sets/Set4/prob6.jpg)
 
 =====
 Problem 7
@@ -104,5 +107,6 @@ any given time to the process.
 
 =====
 
+![](https://github.com/jon5477/CSCI3753/blob/master/Problem%20Sets/Set4/prob7.jpg)
 
 =====
