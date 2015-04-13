@@ -48,6 +48,7 @@ main memory/RAM. Also show possible page tables for P1 and P2
 
 =====
 
+![](https://github.com/jon5477/CSCI3753/edit/master/Problem Sets/Set4/prob3.jpg)
 
 =====
 Problem 4
