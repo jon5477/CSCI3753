@@ -1,0 +1,117 @@
+CS3753 (Operating Systems)
+Spring 2012
+University of Colorado Boulder
+Programming Assignment 5
+A FUSE Encrypted File System
+Public Code
+
+By Andy Sayler - 2012
+<www.andysayler.com>
+
+Inspired by work from Chris Wailes - 2010
+<chris.wailes@gmail.com>
+
+With help from:
+Junho Ahn - 2012
+
+Various files adopted from other exiting work.
+See file comments for specific details and references.
+
+---Dependencies---
+fuse-utils
+openssl
+attr
+attr-dev
+libfuse-dev
+libssl1.0.0 or libssl0.9.8
+libssl-dev
+
+Note: To use extended attributes (xattr) on EXT filesystems,
+      you must add the 'user_xattr' mount option to the
+      mount options of any mounts on which you intend to use 
+      extended attributes. Failure to so may result in an error
+      when trying to set, get, or remove xattr values.
+
+---Folders---
+handout - Assignment description and documentation
+
+---Files---
+Makefile         - GNU makefile to build all relevant code
+README           - This file
+fusehello.c      - Basic "Hello World" FUSE example
+fusexmp.c        - Basic FUSE mirrored filesystem example (mirrors /)
+xattr-util.c     - Basic Extended Attribute manipulation program
+aes-crypt-util.c - Basic AES encryption program using aes-crypt library
+aes-crypt.h      - Basic AES file encryption library interface
+aes-crypt.c      - Basic AES file encryption library implementation
+
+---Executables---
+fusehello      - Mounting executable for "Hello World" FUSE filesystem example
+fusexmp        - Mounting executable for root (\) mirror FUSE filesystem example
+xattr-util     - A simple program for manipulating extended attributes
+aes-crypt-util - A simple program for encrypting, decrypting, or copying files
+
+---Documentation---
+handout/pa5.pdf             - Assignment Instructions and Tips
+http://youtu.be/VrMi6RaUNDs - Assignment Explanation Video 1
+
+---Examples---
+
+***Building***
+
+Build All:
+ make
+
+Build Fuse Examples and Utilities:
+ make fuse-examples
+
+Build xattr Examples and Utilities:
+ make xattr-examples
+
+Build OpenSSL/AES Examples and Utilities:
+ make openssl-examples
+
+Clean:
+ make clean
+
+***FUSE Examples***
+
+Mount fusehello on new directory
+ mkdir <Mount Point>
+ ./fusehello <Mount Point>
+
+Mount fusehello in Debug Mode on existing empty directory
+ ./fusehello -d <Mount Point>
+
+Mount fusexmp on existing directory and list (ls) mirrored root directory (/)
+ ./fusexmp <Mount Point>
+ ls <Mount Point>
+
+Unmount a FUSE filesystem
+ fusermount -u <Mount Point>
+
+***OpenSSL Examples***
+
+Copy FileA to FileB:
+ ./aes-crypt-util -c <FileA Path> <FileB Path>
+
+Encrypt FileA to FileB using Passphrase:
+ ./aes-crypt-util -e <Passphrase> <FileA Path> <FileB Path>
+
+Decrypt FileA to FileB using Passphrase:
+(Note: error if FileA not encrypted with aes-crypt.h or if passphrase is wrong)
+ ./aes-crypt-util -d <Passphrase> <FileA Path> <FileB Path>
+
+***xattr Examples***
+
+List attributes set on a file
+ ./xattr-util -l <File Path>
+
+Set/Write attribute on a file
+ ./xattr-util -s <Attr Name> <Attr Value> <File Path>
+
+Get/Read attribute from a file
+ ./xattr-util -g <Attr Name> <File Path>
+
+Remove attribute from a file
+ ./xattr-util -r <Attr Name> <File Path>
