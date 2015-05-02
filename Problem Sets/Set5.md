@@ -74,7 +74,7 @@ man-in-the-middle attacks, and/or replay attacks.
 4. Client encrypts K using N (the RSA public key) and sends the encrypted key to the server
 5. Client uses K for AES
 6. Server decrypts the encrypted key and uses K for AES
-7. The SSH session is now encrypted using AES with symmetric key K.
+7. The SSH session is now encrypted using AES with symmetric key K. All session data sent to/from the server is now encrypted using AES.
 
 The login password is encrypted using the symmetric key in AES.
 SSH is resilient to eavesdropping attacks since the attacker cannot get K without the private key p.
