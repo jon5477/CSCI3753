@@ -51,8 +51,16 @@ position, what is the total distance in tracks that the disk arm
 moves to satisfy all the pending requests for:
 
 a. FCFS scheduling
+97 -> 84 -> 155 -> 103 -> 96 -> 197
+13 + 71 + 52 + 7 + 101 = 244 total tracks
+
 b. SCAN scheduling
+97 -> 103 -> 155 -> 197 -> 199 -> 96 -> 84
+6 + 52 + 42 + 2 + 115 + 12 = 229 total tracks
+
 c. LOOK scheduling
+97 -> 103 -> 155 -> 197 -> 96 -> 84
+6 + 52 + 42 + 101 + 12 = 213 total tracks
 
 4. Describe the SSH protocol in detail, i.e. describe the initial 
 handshaking phase as well as the subsequent data messaging phase.  When a user 
