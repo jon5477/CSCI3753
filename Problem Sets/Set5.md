@@ -68,3 +68,15 @@ supplies their login password, is it encrypted by a public key or a symmetric ke
 and why?  Explain why or why not SSH is resilient to eavesdropping attacks, 
 man-in-the-middle attacks, and/or replay attacks.
 
+1. Client sends N (the RSA public key) to the server.
+2. Server verifies N using p (the RSA private key)
+3. Client generates a session key K (used as a symmetric key for AES)
+4. Client encrypts K using N (the RSA public key) and sends the encrypted key to the server
+5. Client uses K for AES
+6. Server decrypts the encrypted key and uses K for AES
+7. The SSH session is now encrypted using AES with symmetric key K.
+
+The login password is encrypted using the symmetric key in AES.
+SSH is resilient to eavesdropping attacks since the attacker cannot get K without the private key p.
+Man-in-the-middle attacks are also useless since the attacker cannot spoof the client since the session is encrypted using symmetric key K.
+Replay attacks are also useless since K is randomly generated on each session and will not be the same in future sessions.
