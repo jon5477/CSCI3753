@@ -56,7 +56,7 @@ a. FCFS scheduling
 
 b. SCAN scheduling
 97 -> 103 -> 155 -> 197 -> 199 -> 96 -> 84
-6 + 52 + 42 + 2 + 115 + 12 = 229 total tracks
+6 + 52 + 42 + 2 + 103 + 12 = 217 total tracks
 
 c. LOOK scheduling
 97 -> 103 -> 155 -> 197 -> 96 -> 84
@@ -67,5 +67,4 @@ handshaking phase as well as the subsequent data messaging phase.  When a user
 supplies their login password, is it encrypted by a public key or a symmetric key, 
 and why?  Explain why or why not SSH is resilient to eavesdropping attacks, 
 man-in-the-middle attacks, and/or replay attacks.
-
 
