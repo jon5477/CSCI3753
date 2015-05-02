@@ -12,7 +12,10 @@ unusued entries in partially filled index blocks do count.
 
 How many bytes are used to lay out the file when using
 
-a. a FAT file system? 676 bytes
+a. a FAT file system?
+
+676 bytes
+
 b. a UNIX-style file system?
 
 Now suppose that you wish to read the 1099'th block of the file.
